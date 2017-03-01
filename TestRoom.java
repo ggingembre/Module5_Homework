@@ -1,3 +1,4 @@
+import java.text.*;
 import java.util.Date;
 
 /**
@@ -5,13 +6,21 @@ import java.util.Date;
  */
 public class TestRoom {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
+
+
+        // task 2 : test equal method
 
         boolean test1, test2;
 
-        Date date1 =  new Date();
-        Date date2 = new Date();
-        Date date3 = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy");
+        String strDate1 = "02-04-2017";
+        String strDate2 = "01-03-2017";
+        String strDate3 = "28-02-2017";
+
+        Date date1 = dateFormat.parse(strDate1);
+        Date date2 = dateFormat.parse(strDate2);
+        Date date3 = dateFormat.parse(strDate3);
 
         // create three rooms in order to test the equals to method
 
@@ -26,10 +35,92 @@ public class TestRoom {
 
         System.out.println(test1 + " this should be false\n" + test2 + " this should be true");
 
+        // task 3 and 4: test APIs and see if they find a room as they should
+
+        // BookingComAPI
+        BookingComAPI testBookingAPI = new BookingComAPI();
+
+        // this should find a room
+        Room [] testRoom4 = testBookingAPI.findRooms(1000,2,"Kiev","Hyatt");
+
+        if (testRoom4.length == 0){
+            System.out.println("Your search returned no result");
+        } else {
+            for (int i = 0; i < testRoom4.length; i++ ){
+                System.out.println(testRoom4[i]);
+            }
+
+        }
+
+        // this should say this room does not exist
+        Room [] testRoom5 = testBookingAPI.findRooms(1000,1,"Kiev","Hyatt");
+        if (testRoom5.length == 0){
+            System.out.println("Your search returned no result");
+        } else {
+            for (int i = 0; i < testRoom5.length; i++ ){
+                System.out.println(testRoom5[i]);
+            }
+
+        }
+
+        // question : is there a way to put this "print logic" somewhere else, so that I do not have to repeat it each time?
+        // I guess for now it would have been easier to have a "void" findRoom function that prints results...
+
+        TripAdvisorAPI testTripAdvisorAPI = new TripAdvisorAPI();
+
+        // this should find a room
+        Room [] testRoom6 = testTripAdvisorAPI.findRooms(1000,2,"Kiev","Intercontinental");
+
+        if (testRoom6.length == 0){
+            System.out.println("Your search returned no result");
+        } else {
+            for (int i = 0; i < testRoom6.length; i++ ){
+                System.out.println(testRoom6[i]);
+            }
+
+        }
+
+        // this should say this room does not exist
+        Room [] testRoom7 = testTripAdvisorAPI.findRooms(1000,2,"Kiev","Hyatt");
+        if (testRoom7.length == 0){
+            System.out.println("Your search returned no result");
+        } else {
+            for (int i = 0; i < testRoom7.length; i++ ){
+                System.out.println(testRoom7[i]);
+            }
+
+        }
+
+        // question : is there a way to put this "print logic" somewhere else, so that I do not have to repeat it each time?
+        // I guess for now it would have been easier to have a "void" findRoom function that prints results...
+
+        GoogleAPI testGoogleAPI = new GoogleAPI();
+
+        // this should find a room
+        Room [] testRoom8 = testGoogleAPI.findRooms(1000,4,"Paris","Crillon");
+
+        if (testRoom8.length == 0){
+            System.out.println("Your search returned no result");
+        } else {
+            for (int i = 0; i < testRoom8.length; i++ ){
+                System.out.println(testRoom8[i]);
+            }
+
+        }
+
+        // this should say this room does not exist
+        Room [] testRoom9 = testGoogleAPI.findRooms(1000,2,"Paris","Hyatt");
+        if (testRoom9.length == 0){
+            System.out.println("Your search returned no result");
+        } else {
+            for (int i = 0; i < testRoom9.length; i++ ){
+                System.out.println(testRoom9[i]);
+            }
+
+        }
+
+        // question : is there a way to put this "print logic" somewhere else, so that I do not have to repeat it each time?
+        // I guess for now it would have been easier to have a "void" findRoom function that prints results...
+
     }
-
-
-
-
-
 }

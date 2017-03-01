@@ -45,6 +45,11 @@ public class Room {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "This room is located in " + hotelName + ", " + cityName + ". It is for " + persons + " guests and it costs " +
+                price + ". It is available from " + dateAvailableFrom;
+    }
 
     // Getters and Setters
 
