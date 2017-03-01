@@ -8,7 +8,6 @@ public class TestRoom {
 
     public static void main(String[] args) throws ParseException {
 
-
         // task 2 : test equal method
 
         boolean test1, test2;
@@ -122,5 +121,37 @@ public class TestRoom {
         // question : is there a way to put this "print logic" somewhere else, so that I do not have to repeat it each time?
         // I guess for now it would have been easier to have a "void" findRoom function that prints results...
 
+        // task 5: testing the new methods of the DAO
+
+        // add room
+        // why do I need to write this again? Java did not find the already created object
+        DAOGoogle DAOGoogleTest = new DAOGoogle();
+
+        Room newRoom = new Room(999,300,2, date1, "Tashkent Inn", "Tashkent" );
+        Room[] testRoom10 = DAOGoogleTest.save(newRoom);
+        System.out.println(testRoom10[5]);
+
+        // update room - it does not work, and I cannot understand why...
+
+        //System.out.println("The room before updating is: " + testRoom10[5]);
+        //Room updateRoom = new Room(1235, 110, 2, date2, "Hostel London", "London");
+        //testRoom10 = DAOGoogleTest.update(updateRoom);
+        //System.out.println("The room after updating is: " + testRoom10[5]);
+
+        // delete room
+
+        System.out.println("Before deleting, the third room in the Google DB is: " + testRoom10[2]);
+        Room testRoom11 = testRoom10[2];
+        testRoom10 = DAOGoogleTest.delete(testRoom11);
+        System.out.println("After deleting, the third room in the Google DB is: " + testRoom10[2]);
+
+        // find room byID - for some reason it did not find the tashkent room
+
+        Room testRoom12 = DAOGoogleTest.findById(1237);
+        if (testRoom12 != null) {
+            System.out.println(testRoom12);
+        } else{
+            System.out.println("There is no such room, please check the room ID");
+        }
     }
 }
