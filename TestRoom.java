@@ -153,5 +153,12 @@ public class TestRoom {
         } else{
             System.out.println("There is no such room, please check the room ID");
         }
+
+        String className = testGoogleAPI.getClass().getSimpleName();
+        System.out.println(className);
+
     }
+
+
+
 }

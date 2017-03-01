@@ -37,4 +37,8 @@ public class TripAdvisorAPI implements API {
             newRooms [newRooms.length-1] = newRoom;
             return newRooms;
         }
+
+    public Room[] getRooms() {
+        return TARooms;
     }
+}
