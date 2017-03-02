@@ -41,7 +41,7 @@ public class Controller {
 
         for (int i = 0; i < api1Room.length; i++){
             for (int j = 0; j < api2Room.length; j++){
-                    if (api1Room[i] == api2Room[j]) {
+                    if (api1Room[i].equals(api2Room[j])) {
                             newRoom = api1Room[i];
                             result = addElementToArray (result, newRoom);
                 }

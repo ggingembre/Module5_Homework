@@ -19,7 +19,7 @@ public class DAOBookingCom implements DAO {
         Date date8 = new Date();
 
         rooms[0] = new Room(123,1000,4, date4,"Sofitel","Paris");
-        rooms[1] = new Room(124,100,2, date5,"Hostel Cheap","London");
+        rooms[1] = new Room(1235,100,2, date5,"Hostel Oxford","London");
         rooms[2] = new Room(125,500,2, date6,"11 Mirrors","Kiev");
         rooms[3] = new Room(126,1000,2, date7,"Hyatt","Kiev");
         rooms[4] = new Room(127,900,2, date8,"Hilton","Kiev");
